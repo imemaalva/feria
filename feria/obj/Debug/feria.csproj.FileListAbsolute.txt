@@ -1,0 +1,11 @@
+C:\Users\imeld\Documents\projects\feria\feria\bin\Debug\feria.exe.config
+C:\Users\imeld\Documents\projects\feria\feria\bin\Debug\feria.exe
+C:\Users\imeld\Documents\projects\feria\feria\bin\Debug\feria.pdb
+C:\Users\imeld\Documents\projects\feria\feria\obj\Debug\feria.csproj.AssemblyReference.cache
+C:\Users\imeld\Documents\projects\feria\feria\obj\Debug\feria.csproj.SuggestedBindingRedirects.cache
+C:\Users\imeld\Documents\projects\feria\feria\obj\Debug\feria.Form1.resources
+C:\Users\imeld\Documents\projects\feria\feria\obj\Debug\feria.Properties.Resources.resources
+C:\Users\imeld\Documents\projects\feria\feria\obj\Debug\feria.csproj.GenerateResource.cache
+C:\Users\imeld\Documents\projects\feria\feria\obj\Debug\feria.csproj.CoreCompileInputs.cache
+C:\Users\imeld\Documents\projects\feria\feria\obj\Debug\feria.exe
+C:\Users\imeld\Documents\projects\feria\feria\obj\Debug\feria.pdb
