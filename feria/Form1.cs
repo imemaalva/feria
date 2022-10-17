@@ -13,63 +13,126 @@ namespace feria
 {
     public partial class Form1 : Form
     {
-        public bool finish = false;
+        public bool finish, stop = false;
         public int capCarr = 9, capBarco = 5, capRueda = 8;
         public int caActCarr = 0, caActBar = 0, caActRue = 0;
+
         Random r = new Random();
+        int r2 = 0;
+
+        int s2 = 1000;
         Thread bar;
         Thread carr;
         Thread rued;
         Thread fila;
+        Thread agregaFila;
+        Queue <int> personas;
 
         public Form1()
         {
             InitializeComponent();
+            personas = new Queue<int>();
+            contBar.Text = "0";
+            contCar.Text = "0";
+            contRue.Text = "0";
+            contFil.Text = "0";
+           
+
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+           
+            Start.Enabled = false;
+            End.Enabled = true;
+            finish = false;
+
             bar = new Thread(barco);
             carr = new Thread(carrusel);
             rued = new Thread(rueda);
             fila = new Thread(filaThread);
+            agregaFila = new Thread(addFila);
+
+            fila.Start();
+            bar.Start();
+            carr.Start();
+            rued.Start();
+            agregaFila.Start();
 
         }
 
         public void barco()
         {
-            int  actual = 0;
+            int aux = 0;
 
-            while(finish != true)
+            while (finish != true)
             {
-                if(actual == capBarco)
+                if (caActBar != aux)
                 {
-                    for(int i = 0; i < 1000000; i++) { }
-                    actual = 0;
+                    aux = caActBar;
+                    if (caActBar == capBarco)
+                    {
+                        SetStatus(contBar, 0, 1, 1);
+                        for (int i = 0; i < 1000000000; i++) { }
+                        caActBar = 0;
+                        aux = 0;
+                        SetStatus(contBar, 0, 3, 1);
+                    }
+                    else
+                    {
+                        SetStatus(contBar, 0, 2, 1);
+                    }
                 }
             }
         }
 
         public void carrusel()
         {
-            int  actual = 0;
+            int  aux= 0;
 
             while (finish != true)
             {
-                if (actual == capCarr)
+                if (caActCarr != aux)
                 {
-                    for (int i = 0; i < 1000000; i++) { }
-                    actual = 0;
+                    aux = caActCarr;
+                    if(caActCarr == capCarr)
+                    {
+                        SetStatus(contCar, 0, 1, 2);
+                        for (int i=0; i < 1000000000; i++) { }
+                        caActCarr = 0;
+                        aux = 0;
+                        SetStatus(contCar, 0, 3, 2);
+                    }
+                    else
+                    {
+                        SetStatus(contBar, 0, 2, 2);
+                    }
                 }
             }
         }
 
         public void rueda()
         {
-            int actual = 0;
+            int aux = 0;
 
             while (finish != true)
             {
-                if (actual == capRueda)
+                if (caActRue != aux)
                 {
-                    for (int i = 0; i < 1000000; i++) { }
-                    actual = 0;
+                    aux = caActRue;
+                    if (caActRue == capRueda)
+                    {
+                        SetStatus(contRue, 0, 1, 3);
+                        for (int i = 0; i < 1000000000; i++) { }
+                         caActRue = 0;
+                         aux = 0;
+                        SetStatus(contRue, 0, 3, 3);
+                    }
+                    else
+                    {
+                        SetStatus(contRue, 0, 2, 3);
+                    }
                 }
             }
         }
@@ -78,34 +141,229 @@ namespace feria
         {
             while(finish != true)
             {
-                int persona = r.Next(1, 3);
+                SetStatus(label13, 0, 1, 1);
+                int i = 0;
+                int persona = personas.Dequeue();
                 switch (persona)
                 {
                     case 1:
+                        if(caActBar < capBarco)
+                        {
+                            SetStatus(label13, 1, 1, persona);
+                            i = 0;
+                            while (i < 1000 && finish != true)
+                            {
+                                i++;
+                            }
+                            caActBar++;
+                        }
+                        else
+                        {
+                            SetStatus(label13, 1, 2, persona);
+                            while (caActBar == capBarco && finish != true)
+                            {
+                                stop = true;
+                            }
+                            stop = false;
+                            SetStatus(label13, 1, 1, persona);
+                            i = 0;
+                            while (i < 1000 && finish != true)
+                            {
+                                i++;
+                            }
+                            caActBar++;
+                        }
                         break;
                     case 2:
+                        if (caActCarr < capCarr)
+                        {
+                            SetStatus(label13, 1, 1, persona);
+                            i = 0;
+                            while (i < 1000 && finish != true)
+                            {
+                                i++;
+                            }
+                            caActCarr++;
+                        }
+                        else
+                        {
+                            SetStatus(label13, 1, 2, persona);
+                            while (caActCarr == capCarr && finish != true)
+                            {
+                                stop = true;
+                            }
+                            stop = false;
+                            SetStatus(label13, 1, 1, persona);
+                            i = 0;
+                            while (i < 1000 && finish != true)
+                            {
+                                i++;
+                            }
+                            caActCarr++;
+                        }
                         break;
                     case 3:
+                        if (caActRue < capRueda)
+                        {
+                            SetStatus(label13, 1, 1, persona);
+                            i = 0;
+                            while (i < 1000 && finish != true)
+                            {
+                                i++;
+                            }
+                            caActRue++;
+                        }
+                        else
+                        {
+                            SetStatus(label13, 1, 2, persona);
+                            while (caActRue == capRueda && finish != true)
+                            {
+                                stop = true;
+                            }
+                            stop = false;
+                            SetStatus(label13, 1, 1, persona);
+                            i = 0;
+                            while (i < 1000 && finish != true)
+                            {
+                                i++;
+                            }
+                            caActRue++;
+                        }
                         break;
                     default:
+                        break;
+                }
+                SetStatus(contFil, 1, personas.Count, 0);
+            }
+        }
+
+        public void addFila()
+        {
+            while(finish != true)
+            {
+                while(stop != true && finish != true)
+                {
+                    r2 = r.Next(1,4);
+                    personas.Enqueue(r2);
+                    SetStatus(contFil, 1, personas.Count, 0);
+                    int i = 1;
+                    while(i < s2+ 150505000 && finish != true)
+                    {
+                        i++;
+                    }
+                }
+            }
+        }
+
+        private delegate void SetStatusD(System.Windows.Forms.Label label, int id, int status, int id2);
+        private void SetStatus(System.Windows.Forms.Label label, int id, int status, int id2)
+        {
+            if (contCar.InvokeRequired)
+            {
+                SetStatusD delegado = new SetStatusD(SetStatus);
+                contCar.Invoke(delegado, new object[] { label, id, status, id2 });
+            }
+            else
+            {
+                string aux;
+                switch (id)
+                {
+                    //Juego
+                    case 0:
+                        switch (status)
+                        {
+                            //Lleno
+                            case 1:
+                                label.Text = "Lleno";
+                                break;
+                            //Porcentaje
+                            case 2:
+                                switch (id2)
+                                {
+                                    case 1:
+                                        //aux = "Capacidad: " + actualMontana.ToString() + " de " + capMontana.ToString();
+                                        label.Text = caActBar.ToString();
+                                        break;
+                                    case 2:
+                                       //aux = "Capacidad: " + actualDragon.ToString() + " de " + capDragon.ToString();
+                                        label.Text = caActCarr.ToString();  
+                                        break;
+                                    case 3:
+                                        //aux = "Capacidad: " + actualRueda.ToString() + " de " + capRueda.ToString();
+                                        label.Text = caActRue.ToString();
+                                        break;
+                                }
+                                break;
+                            //Reset-Vacio
+                            case 3:
+                                switch (id2)
+                                {
+                                    case 1:
+                                        ///aux = "Capacidad: 0 de " + capMontana.ToString();
+                                        label.Text = "0";
+                                        break;
+                                    case 2:
+                                        //aux = "Capacidad: 0 de " + capDragon.ToString();
+                                        label.Text = "0";
+                                        break;
+                                    case 3:
+                                        //aux = "Capacidad: 0 de " + capRueda.ToString();
+                                        label.Text = "0";
+                                        break;
+                                }
+                                break;
+                        }
+                        break;
+                    //Fila
+                    case 1:
+                        switch (status)
+                        {
+                            //Cooldown
+                            case 0:
+                                label.Text = "Siguiente persona";
+                                break;
+                            //Yendo
+                            case 1:
+                                switch (id2)
+                                {
+                                    case 1:
+                                        label.Text = "Hacia la montaña rusa";
+                                        break;
+                                    case 2:
+                                        label.Text = "Hacia el dragoncito";
+                                        break;
+                                    case 3:
+                                        label.Text = "Hacia la rueda de la fortuna";
+                                        break;
+                                }
+
+                                break;
+                            default:
+                                label.Text = "Personas en fila: " + status.ToString();
+                                break;
+
+                        }
+                        break;
+                    //Hilo
+                    case 2:
+                        if (status == 5) { label.Text = id2.ToString(); }
+                        else
+                        {
+                            label.Text = "Terminado";
+                        }
+
                         break;
                 }
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            fila.Start();
-            bar.Start();
-            carr.Start();
-            rued.Start();
-            button1.Enabled= false;
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
             finish = true;
+            Start.Enabled = true;
+            End.Enabled = false;
         }
+
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {

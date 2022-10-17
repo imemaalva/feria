@@ -41,15 +41,17 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.Start = new System.Windows.Forms.Button();
+            this.End = new System.Windows.Forms.Button();
+            this.contBar = new System.Windows.Forms.Label();
+            this.contCar = new System.Windows.Forms.Label();
+            this.contRue = new System.Windows.Forms.Label();
+            this.contFil = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -177,20 +179,6 @@
             this.label8.TabIndex = 12;
             this.label8.Text = "Cupo actual: ";
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(134, 258);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(24, 20);
-            this.textBox1.TabIndex = 13;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(378, 261);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(24, 20);
-            this.textBox2.TabIndex = 15;
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -200,13 +188,6 @@
             this.label9.Size = new System.Drawing.Size(84, 16);
             this.label9.TabIndex = 14;
             this.label9.Text = "Cupo actual: ";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(611, 262);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(24, 20);
-            this.textBox3.TabIndex = 17;
             // 
             // label10
             // 
@@ -239,40 +220,87 @@
             this.label12.TabIndex = 19;
             this.label12.Text = "pirata";
             // 
-            // button1
+            // Start
             // 
-            this.button1.Location = new System.Drawing.Point(83, 385);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 20;
-            this.button1.Text = "Start";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.Start.Location = new System.Drawing.Point(83, 385);
+            this.Start.Name = "Start";
+            this.Start.Size = new System.Drawing.Size(75, 23);
+            this.Start.TabIndex = 20;
+            this.Start.Text = "Start";
+            this.Start.UseVisualStyleBackColor = true;
+            this.Start.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // End
             // 
-            this.button2.Location = new System.Drawing.Point(83, 414);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 21;
-            this.button2.Text = "End";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.End.Location = new System.Drawing.Point(83, 414);
+            this.End.Name = "End";
+            this.End.Size = new System.Drawing.Size(75, 23);
+            this.End.TabIndex = 21;
+            this.End.Text = "End";
+            this.End.UseVisualStyleBackColor = true;
+            this.End.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // contBar
+            // 
+            this.contBar.AutoSize = true;
+            this.contBar.Location = new System.Drawing.Point(133, 261);
+            this.contBar.Name = "contBar";
+            this.contBar.Size = new System.Drawing.Size(41, 13);
+            this.contBar.TabIndex = 22;
+            this.contBar.Text = "label13";
+            // 
+            // contCar
+            // 
+            this.contCar.AutoSize = true;
+            this.contCar.Location = new System.Drawing.Point(371, 264);
+            this.contCar.Name = "contCar";
+            this.contCar.Size = new System.Drawing.Size(41, 13);
+            this.contCar.TabIndex = 23;
+            this.contCar.Text = "label13";
+            // 
+            // contRue
+            // 
+            this.contRue.AutoSize = true;
+            this.contRue.Location = new System.Drawing.Point(609, 264);
+            this.contRue.Name = "contRue";
+            this.contRue.Size = new System.Drawing.Size(41, 13);
+            this.contRue.TabIndex = 24;
+            this.contRue.Text = "label13";
+            // 
+            // contFil
+            // 
+            this.contFil.AutoSize = true;
+            this.contFil.Location = new System.Drawing.Point(486, 368);
+            this.contFil.Name = "contFil";
+            this.contFil.Size = new System.Drawing.Size(41, 13);
+            this.contFil.TabIndex = 25;
+            this.contFil.Text = "label13";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(486, 419);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(41, 13);
+            this.label13.TabIndex = 26;
+            this.label13.Text = "label13";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(744, 526);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.contFil);
+            this.Controls.Add(this.contRue);
+            this.Controls.Add(this.contCar);
+            this.Controls.Add(this.contBar);
+            this.Controls.Add(this.End);
+            this.Controls.Add(this.Start);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -310,15 +338,17 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button Start;
+        private System.Windows.Forms.Button End;
+        private System.Windows.Forms.Label contBar;
+        private System.Windows.Forms.Label contCar;
+        private System.Windows.Forms.Label contRue;
+        private System.Windows.Forms.Label contFil;
+        private System.Windows.Forms.Label label13;
     }
 }
 
