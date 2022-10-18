@@ -36,9 +36,7 @@ namespace feria
             contCar.Text = "0";
             contRue.Text = "0";
             contFil.Text = "0";
-           
-
-
+            label13.Text = "";
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -54,12 +52,11 @@ namespace feria
             fila = new Thread(filaThread);
             agregaFila = new Thread(addFila);
 
+            agregaFila.Start();
             fila.Start();
             bar.Start();
             carr.Start();
             rued.Start();
-            agregaFila.Start();
-
         }
 
         public void barco()
@@ -106,7 +103,7 @@ namespace feria
                     }
                     else
                     {
-                        SetStatus(contBar, 0, 2, 2);
+                        SetStatus(contCar, 0, 2, 2);
                     }
                 }
             }
@@ -143,6 +140,10 @@ namespace feria
             {
                 SetStatus(label13, 0, 1, 1);
                 int i = 0;
+                while (i < s2 + 200000000 && finish != true)
+                {
+                    i++;
+                }
                 int persona = personas.Dequeue();
                 switch (persona)
                 {
@@ -247,7 +248,7 @@ namespace feria
                     personas.Enqueue(r2);
                     SetStatus(contFil, 1, personas.Count, 0);
                     int i = 1;
-                    while(i < s2+ 150505000 && finish != true)
+                    while(i < s2 + 130000000 && finish != true)
                     {
                         i++;
                     }
@@ -265,49 +266,39 @@ namespace feria
             }
             else
             {
-                string aux;
                 switch (id)
                 {
-                    //Juego
                     case 0:
                         switch (status)
                         {
-                            //Lleno
                             case 1:
                                 label.Text = "Lleno";
                                 break;
-                            //Porcentaje
                             case 2:
                                 switch (id2)
                                 {
                                     case 1:
-                                        //aux = "Capacidad: " + actualMontana.ToString() + " de " + capMontana.ToString();
+                                     
                                         label.Text = caActBar.ToString();
                                         break;
                                     case 2:
-                                       //aux = "Capacidad: " + actualDragon.ToString() + " de " + capDragon.ToString();
                                         label.Text = caActCarr.ToString();  
                                         break;
                                     case 3:
-                                        //aux = "Capacidad: " + actualRueda.ToString() + " de " + capRueda.ToString();
                                         label.Text = caActRue.ToString();
                                         break;
                                 }
                                 break;
-                            //Reset-Vacio
                             case 3:
                                 switch (id2)
                                 {
                                     case 1:
-                                        ///aux = "Capacidad: 0 de " + capMontana.ToString();
                                         label.Text = "0";
                                         break;
                                     case 2:
-                                        //aux = "Capacidad: 0 de " + capDragon.ToString();
                                         label.Text = "0";
                                         break;
                                     case 3:
-                                        //aux = "Capacidad: 0 de " + capRueda.ToString();
                                         label.Text = "0";
                                         break;
                                 }
@@ -327,10 +318,10 @@ namespace feria
                                 switch (id2)
                                 {
                                     case 1:
-                                        label.Text = "Hacia la montaña rusa";
+                                        label.Text = "Hacia el barco pirata";
                                         break;
                                     case 2:
-                                        label.Text = "Hacia el dragoncito";
+                                        label.Text = "Hacia el carrusel";
                                         break;
                                     case 3:
                                         label.Text = "Hacia la rueda de la fortuna";
@@ -346,7 +337,7 @@ namespace feria
                         break;
                     //Hilo
                     case 2:
-                        if (status == 5) { label.Text = id2.ToString(); }
+                        if (status == 5) { label.Text = id2.ToString(); } 
                         else
                         {
                             label.Text = "Terminado";
